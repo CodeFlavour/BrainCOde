@@ -20,9 +20,21 @@
   <ItemGroup>
     <!-- Files not to show in IDE -->
     <None Remove="yarn.lock" />
+    <Compile Remove="BrainCode.Api.Tests\**" />
+    <Compile Remove="BrainCode.Api.Test\**" />
+    <Compile Remove="BrainCode.Api\**" />
+    <Content Remove="BrainCode.Api.Tests\**" />
+    <Content Remove="BrainCode.Api.Test\**" />
+    <Content Remove="BrainCode.Api\**" />
 
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
     <Content Remove="ClientApp\**" />
+    <EmbeddedResource Remove="BrainCode.Api.Tests\**" />
+    <EmbeddedResource Remove="BrainCode.Api.Test\**" />
+    <EmbeddedResource Remove="BrainCode.Api\**" />
+    <None Remove="BrainCode.Api.Tests\**" />
+    <None Remove="BrainCode.Api.Test\**" />
+    <None Remove="BrainCode.Api\**" />
   </ItemGroup>
   <Target Name="RunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
