@@ -13,11 +13,11 @@ namespace BrainCode.Api.Services
     {
         private string _url = "https://ssl.allegro.pl/auth/oauth/token?grant_type=client_credentials";
 
-        private Dictionary<string, string> _headers = new Dictionary<string, string>()
+        private List<Header> _headers = new List<Header>()
         {
-            { "Authorization","Basic YTQxZjViMmEtOGU4Ny00YjhiLWI2ZmUtNzRjYzc2MzcyMGQ3OmJ4YmIyZ0ZxQ1AxYU0za05QZXB0QVdRTUd6OWdvc2JlOUpDTzFzcWxwMEJoWTlHNFV1ZnBrWGdzU0ZRWUU1NDU=" }
+            new Header("Authorization", "Basic YTQxZjViMmEtOGU4Ny00YjhiLWI2ZmUtNzRjYzc2MzcyMGQ3OmJ4YmIyZ0ZxQ1AxYU0za05QZXB0QVdRTUd6OWdvc2JlOUpDTzFzcWxwMEJoWTlHNFV1ZnBrWGdzU0ZRWUU1NDU=")
         };
-
+        
         public async Task<Header> GetBearerHeader()
         {
             string access_token = await GetBearerToken();
@@ -36,7 +36,7 @@ namespace BrainCode.Api.Services
 
             foreach(var header in _headers)
             {
-                request.Headers.Add(header.Key, header.Value);
+                request.Headers.Add(header.Name, header.Value);
             }
 
             var response = await client.SendAsync(request);
