@@ -1,2 +1,2 @@
-# PentaCoders---BrainCode
-Projekt na hackaton BrainCode 2017
+# Urlop-w-gorach
+Serwis do kompletnego zaplanowania urlopu w gorach
