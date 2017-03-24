@@ -7,16 +7,24 @@ using BrainCode.Api.Models;
 namespace BrainCode.Api.Tests
 {
     [TestClass]
-    public class BearerServiceTests
+    public class ServiceTests
     {
         [TestMethod]
-        public void Completed()
+        public void BearerServiceTest()
         {
             BearerService service = new BearerService();
             Header result = service.GetBearerHeader().Result;
 
             Assert.AreEqual("Authorization", result.Name);
             Assert.IsNotNull(result.Value);
+        }
+
+        [TestMethod]
+        public void OfferDetailsServiceTest()
+        {
+            OfferDetailsService service = new OfferDetailsService();
+            
+            OfferDetails details = service.GetOfferDetails("6754645454").Result;
         }
     }
 }
