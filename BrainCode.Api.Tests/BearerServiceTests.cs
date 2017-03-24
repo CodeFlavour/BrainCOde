@@ -2,6 +2,7 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BrainCode.Api.Services;
 using System.Collections.Generic;
+using BrainCode.Api.Models;
 
 namespace BrainCode.Api.Tests
 {
@@ -12,9 +13,9 @@ namespace BrainCode.Api.Tests
         public void Completed()
         {
             BearerService service = new BearerService();
-            KeyValuePair<string,string> result = service.GetBearerHeader().Result;
+            Header result = service.GetBearerHeader().Result;
 
-            Assert.AreEqual("Authorization", result.Key);
+            Assert.AreEqual("Authorization", result.Name);
             Assert.IsNotNull(result.Value);
         }
     }

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BrainCode.Api.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,10 @@ namespace BrainCode.Api.Services
             { "Authorization","Basic YTQxZjViMmEtOGU4Ny00YjhiLWI2ZmUtNzRjYzc2MzcyMGQ3OmJ4YmIyZ0ZxQ1AxYU0za05QZXB0QVdRTUd6OWdvc2JlOUpDTzFzcWxwMEJoWTlHNFV1ZnBrWGdzU0ZRWUU1NDU=" }
         };
 
-        public async Task<KeyValuePair<string,string>> GetBearerHeader()
+        public async Task<Header> GetBearerHeader()
         {
             string access_token = await GetBearerToken();
-            return new KeyValuePair<string, string>("Authorization", string.Format("Bearer {0}", access_token));
+            return new Header("Authorization", string.Format("Bearer {0}", access_token));
         }
        
         private async Task<string> GetBearerToken()
