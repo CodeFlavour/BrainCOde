@@ -74,6 +74,20 @@ namespace BrainCode.Api.Services
                 });
             }
 
+            result.Views = Convert.ToInt32(responseJsonObject["views"].Value<string>());
+
+            result.Name = responseJsonObject["views"].Value<string>();
+
+            result.Description = responseJsonObject["description"]["plainText"].Value<string>();
+
+            result.Prices = responseJsonObject["prices"].ToObject<Prices>();
+
+            result.Bids = responseJsonObject["bids"].ToObject<Bids>();
+
+            result.Seller = responseJsonObject["seller"].ToObject<Seller>();
+
+            result.Quantities = responseJsonObject["quantities"].ToObject<Quantities>();
+
             return result;
         }
     }
