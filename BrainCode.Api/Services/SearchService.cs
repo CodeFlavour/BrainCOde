@@ -1,6 +1,5 @@
 ﻿using BrainCode.Api.Helpers;
 using BrainCode.Api.Models;
-using BrainCode.Api.ViewModels;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

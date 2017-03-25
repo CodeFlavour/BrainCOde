@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using BrainCode.Api.Models;
 using System.Net.Http;
 using BrainCode.Api.Services;
-using BrainCode.Api.ViewModels;
 
 namespace BrainCode.Api.Controllers
 {
