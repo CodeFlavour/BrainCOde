@@ -29,7 +29,7 @@ namespace BrainCode.Api.Controllers
 
         // POST api/values
         [HttpPost]
-        public List<Offer> Search([FromBody]string title, string phrase, List<Parameter> parameters)
+        public List<Offer> Search(string title, string phrase, List<Parameter> parameters)
         {
             var foundOffers = searchService.SearchOffers(title, phrase, parameters).Result;
             //var response = 
@@ -43,7 +43,7 @@ namespace BrainCode.Api.Controllers
             var offerDetails = offerDetailService.GetOfferDetails(id).Result;
             var categoryID = offerDetails.Categories.First(x => x.Parent == "0").Id;
             var newID = "-1";
-            while(newID!= categoryID)
+            while (newID != categoryID)
             {
                 newID = categoryID;
                 var category = offerDetails.Categories.FirstOrDefault(x => x.Parent == categoryID);
@@ -54,7 +54,7 @@ namespace BrainCode.Api.Controllers
             }
             var filterDescriptors = searchService.GetFiltersDataForCategory(categoryID).Result;
             List<FilterDescriptor> result = new List<FilterDescriptor>();
-            foreach(var category in offerDetails.Attributes)
+            foreach (var category in offerDetails.Attributes)
             {
                 var descriptor = filterDescriptors.First(x => x.Name == category.Name);
                 result.Add(new FilterDescriptor() { ID = descriptor.ID, Name = descriptor.Name, Values = descriptor.Values.Where(x => category.Attributes.Contains(x.Name)).ToList() });

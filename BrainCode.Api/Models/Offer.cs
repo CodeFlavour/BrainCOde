@@ -21,6 +21,7 @@ namespace BrainCode.Api.Models
             this.BiddingPrice = (bool)item["auction"] == true ? item["prices"]["current"]["amount"].ToObject<decimal?>() : null;
             this.OfferEndDate = (DateTime?)item["endingAt"];
             this.PhotoUrl = (string)(item["images"][0]["url"]);
+            this.OfferUrl = (string)(item["url"]);
         }
 
         public string ID { get; set; }
@@ -34,5 +35,7 @@ namespace BrainCode.Api.Models
         public DateTime? OfferEndDate { get; set; }
 
         public string PhotoUrl { get; set; }
+
+        public string OfferUrl { get; set; }
     }
 }
