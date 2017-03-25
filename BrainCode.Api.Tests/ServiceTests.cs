@@ -29,12 +29,16 @@ namespace BrainCode.Api.Tests
         }
 
         [TestMethod]
-        public void AnalyzeServiceTest()
+        public void AnalyzeOneServiceTest()
         {
             AnalyzeService service = new AnalyzeService(@"C:\Data\stopwords.txt");
 
-            Statistic statistic = service.Analyze("6754645454", x => x.Name).Result;
-            
+            Statistic statistic = service.Analyze("6754645454", x => x.Name).Result;            
+        }
+
+        public void AnalyzeServiceTest()
+        {
+
         }
     }
 }

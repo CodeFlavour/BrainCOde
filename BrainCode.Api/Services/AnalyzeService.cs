@@ -11,6 +11,7 @@ namespace BrainCode.Api.Services
     {
         private string[] _stopwords;
         private OfferDetailsService _offerDetailsService;
+        private SearchService _searchService;
 
         public AnalyzeService() : this(@"Data\stopwords.txt")
         {
@@ -19,9 +20,16 @@ namespace BrainCode.Api.Services
         public AnalyzeService(string stepwordsPath)
         {
             _offerDetailsService = new OfferDetailsService();
+            _searchService = new SearchService();
             _stopwords = System.IO.File.ReadAllLines(stepwordsPath);
         }
 
+        public async Task Analyze(string searchPhrase)
+        {
+            List<Offer> offers = await _searchService.SearchOffers(null, searchPhrase, null);
+
+            
+        }
 
         public async Task<Statistic> Analyze(string id, Func<OfferDetails, string> getStringToAnalyze)
         {
