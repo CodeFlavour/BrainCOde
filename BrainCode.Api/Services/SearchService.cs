@@ -59,7 +59,7 @@ namespace BrainCode.Api.Services
             if (parameters != null)
             {
                 //parameters.ForEach(x => phrases.Add(x.ParameterName + " " + x.ParameterValue));
-                parameters.ForEach(x => urlParameters.Add(x.ParameterName + "=" + x.ParameterValue));
+                parameters.Where(x => x != null).ToList().ForEach(x => urlParameters.Add(x.ParameterName + "=" + x.ParameterValue));
             }
 
 
