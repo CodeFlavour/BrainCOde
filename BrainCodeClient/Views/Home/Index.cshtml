@@ -37,9 +37,7 @@
     }
 
     .alleImage {
-        height:30px;
-        width:170px;
-
+        height:40px;
     }
 
     .hrBreakLine {
@@ -47,11 +45,29 @@
     }
 
     #alleCoZnalazloTopicDIV {
-        background-color: #2b2f49;
+        height: 64px;
     }
 
     #allternatywaTopicDIV {
-        background-color: #fff;
+        
+    }
+
+    .akucjaAleCoZnalazloDescription{
+
+    }
+
+    /*.akucjaAleCoZnalazloImages {
+           width: 64px;
+           height: 64px;
+    }
+
+    .akucjaAllternatywaImages {
+        width: 64px;
+           height: 64px;
+    }*/
+
+    .akucjaAllternatywaDescription {
+
     }
     
 </style>
@@ -96,12 +112,46 @@
 <!-- Aukcje-->
 <div class="row" style="padding-top:50px;">
     <div class="col-lg-8 alleCoZnalazloDIV">
-        <div style="background-color:black; height:500px;">
-
+        <div>
+            <div class="container">
+                <div class="row" style="padding-top:5px;">
+                    <div class="col-lg-7">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg==" alt="...">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Nazwa akucji</h4>
+                                <p class="akucjaAleCoZnalazloDescription">Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
         </div>
     </div>
     <div class="col-lg-4 allternatywaDIV" style="background-color:red; height:500px;">
-        Container Right
+        <div>
+            <div class="container">
+                <div class="row" style="padding-top:5px;">
+                    <div class="col-lg-7">
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg==" alt="...">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Nazwa akucji</h4>
+                                <p class="akucjaAllternatywaDescription">Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
           
@@ -113,20 +163,37 @@
                         var canResizeAlleCoDiv;
                         var carResizeAllternatywaDiv;
                         $(function () {
-                            $("#imageAleCoZnalazlo").click(function () {
-                               
-                                    hideAlleImages();
+                            $("#imageAleCoZnalazlo").click(function () {                               
+                                hideAlleImages();
+                                $(".akucjaAllternatywaDescription").fadeOut();
+                                    $("#imageAleCoZnalazlo").attr("src", "../images/allternatywa/alecoznalazloCollapsed.png");
                                     $(".alleCoZnalazloDIV").animate({ width: '760px' }, 500);
-                                    $(".allternatywaDIV").animate({ width: '380px' }, 500);
+                                    $(".allternatywaDIV").animate({ width: '380px' }, 500);    
+                                    $("#imageAllternatywa").attr("src", "../images/allternatywa/aleternatywaExpanded.png");
+                                    $(".akucjaAleCoZnalazloDescription").fadeIn();
                                     showAlleImages();                                
                             });
 
                             $("#imageAllternatywa").click(function () {                                
-                                    hideAlleImages();
+                                hideAlleImages();                                
+                                $(".akucjaAleCoZnalazloDescription").fadeOut();
+                                $("#imageAllternatywa").attr("src", "../images/allternatywa/alejaknazwacCollapsed.png");
                                     $(".alleCoZnalazloDIV").animate({ width: '380px' }, 500);
                                     $(".allternatywaDIV").animate({ width: '760px' }, 500);
+                                    $("#imageAleCoZnalazlo").attr("src", "../images/allternatywa/alecoznalazloExpanded.png");
+                                    $(".akucjaAllternatywaDescription").fadeIn();
                                     showAlleImages();
                             });
+
+                            $("#searchButton").click(function () {
+                                hideAlleImages();
+                                $(".akucjaAllternatywaDescription").fadeOut();
+                                $(".alleCoZnalazloDIV").animate({ width: '760px' }, 500);
+                                $(".allternatywaDIV").animate({ width: '380px' }, 500);
+                                $(".akucjaAleCoZnalazloDescription").fadeIn();
+                                showAlleImages();
+                            });
+                            
                         })
 
                         function hideAlleImages()
