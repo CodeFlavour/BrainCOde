@@ -1,0 +1,147 @@
+﻿<style>
+    #alleCoZnalazloDIV {
+        left: 0px;
+    }
+
+    #allternatywaDIV {
+        right: 0px;
+    }
+
+
+    #mainAlleCoImage {
+        width:300px;
+        height: 100px;
+    }
+    #searchInputMy {
+        border: 3px solid green;
+        margin: auto;
+        width: 95% !important;
+        height: 40px;
+    }
+
+    #searchButton {
+        border: 3px solid #2b2f49;
+        margin: auto;
+        width: 90% !important;
+        height: 40px;
+    }
+    .nopadding {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .alleCenterImageDiv {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+    }
+
+    .alleImage {
+        height:30px;
+        width:170px;
+
+    }
+
+    .hrBreakLine {
+        border: 2px solid #f38148;
+    }
+
+    #alleCoZnalazloTopicDIV {
+        background-color: #2b2f49;
+    }
+
+    #allternatywaTopicDIV {
+        background-color: #fff;
+    }
+    
+</style>
+<!-- Wyszukiwanie-->
+    <div class="row">
+        <div class="col-lg-4" id="mainAlleCoImage">
+            <img src="~/images/alternativesearch/u3.png" id="mainAlleCoImage" />
+        </div>
+        <div class="col-lg-6 .nopadding">
+            <div style="padding-top:33px;">
+                <input type="text" id="searchInputMy" class="form-control"  placeholder="Szukasz...?" >
+            </div>
+        </div>
+        <div class="col-lg-2 .nopadding" style="padding-top:33px;">            
+            <button type="button" class="btn btn-default" id="searchButton">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+
+    <hr class="hrBreakLine"/>
+<!-- Koniec Wyszukiwanie-->
+
+<!-- Nazwy gridów-->
+<div style="padding-top:5%">
+    <div class="row">
+        <div class="col-lg-8 alleCoZnalazloDIV">
+            <div class="alleCenterImageDiv" id="alleCoZnalazloTopicDIV">
+                <img src="~/images/allternatywa/alecoznalazloExpanded.png" class="alleImage" id="imageAleCoZnalazlo" />
+            </div>
+        </div>
+        <div class="col-lg-4 allternatywaDIV">
+            <div class="alleCenterImageDiv" id="allternatywaTopicDIV">
+                <img src="~/images/allternatywa/aleternatywaCollapsed.png" class="alleImage" id="imageAllternatywa" />
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Koniec Nazwy gridów-->
+
+<!-- Aukcje-->
+<div class="row" style="padding-top:50px;">
+    <div class="col-lg-8 alleCoZnalazloDIV">
+        <div style="background-color:black; height:500px;">
+
+        </div>
+    </div>
+    <div class="col-lg-4 allternatywaDIV" style="background-color:red; height:500px;">
+        Container Right
+    </div>
+</div>
+          
+<!-- Koniec Aukcje-->
+
+            @section scripts
+            {
+                    <script>
+                        var canResizeAlleCoDiv;
+                        var carResizeAllternatywaDiv;
+                        $(function () {
+                            $("#imageAleCoZnalazlo").click(function () {
+                               
+                                    hideAlleImages();
+                                    $(".alleCoZnalazloDIV").animate({ width: '760px' }, 500);
+                                    $(".allternatywaDIV").animate({ width: '380px' }, 500);
+                                    showAlleImages();                                
+                            });
+
+                            $("#imageAllternatywa").click(function () {                                
+                                    hideAlleImages();
+                                    $(".alleCoZnalazloDIV").animate({ width: '380px' }, 500);
+                                    $(".allternatywaDIV").animate({ width: '760px' }, 500);
+                                    showAlleImages();
+                            });
+                        })
+
+                        function hideAlleImages()
+                        {
+                            $("#alleCoZnalazloTopicDIV").fadeOut();
+                            $("#allternatywaTopicDIV").fadeOut();
+                        }
+
+                        function showAlleImages()
+                        {
+                            $("#alleCoZnalazloTopicDIV").fadeIn();
+                            $("#allternatywaTopicDIV").fadeIn();
+                        }
+                    </script>
+                }
+
+
+
