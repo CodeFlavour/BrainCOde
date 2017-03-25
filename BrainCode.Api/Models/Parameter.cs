@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BrainCode.Api.ViewModels
+namespace BrainCode.Api.Models
 {
     public class Parameter
     {
