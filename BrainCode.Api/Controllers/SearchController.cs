@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using BrainCode.Api.Models;
 using System.Net.Http;
 using BrainCode.Api.Services;
+using Microsoft.AspNetCore.Cors;
 
 namespace BrainCode.Api.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowAllOrigin")]
     public class SearchController : Controller
     {
         private SearchService searchService;
