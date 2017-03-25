@@ -62,3 +62,18 @@ textarea {
     .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
         display: none;
     }
+
+
+#cover {
+    background: url("../images/hourglass.gif") no-repeat scroll center center #FFF !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    -khtml-opacity: 0.8;
+    opacity: 0.8;
+    z-index: 998;
+}

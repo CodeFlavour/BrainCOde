@@ -23,7 +23,8 @@ namespace BrainCodeClient
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/nouislider.js",
-                      "~/Scripts/select2.js"));
+                      "~/Scripts/select2.js",
+                      "~/Scripts/global.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
