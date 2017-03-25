@@ -7,6 +7,7 @@ using BrainCode.Api.Models;
 using System.Net.Http;
 using BrainCode.Api.Services;
 using Microsoft.AspNetCore.Cors;
+using Newtonsoft.Json;
 
 namespace BrainCode.Api.Controllers
 {
@@ -31,9 +32,14 @@ namespace BrainCode.Api.Controllers
 
         // POST api/values
         [HttpGet]
-        public List<Offer> Search(string title, string phrase, List<Parameter> parameters)
+        public List<Offer> Search(string title, string phrase, string parameters)
         {
-            var foundOffers = searchService.SearchOffers(title, phrase, parameters).Result;
+            List<Parameter> unstringifiedParameters = new List<Parameter>();
+            if (!string.IsNullOrEmpty(parameters))
+            {
+                unstringifiedParameters = JsonConvert.DeserializeObject<List<Parameter>>(parameters);
+            }
+            var foundOffers = searchService.SearchOffers(title, phrase, unstringifiedParameters).Result;
             //var response = 
             return foundOffers;
         }

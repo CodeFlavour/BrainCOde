@@ -64,12 +64,19 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4 col-xs-12" style="font-weight:bold">Zakres cen:</div></div>
+    <div class="col-md-4 col-xs-12" style="font-weight:bold">Zakres cen:</div>
     <div id="range" class="col-md-8 col-xs-12"></div>
 </div>
 
+<div class="row">
+    <div id="graph"></div>
+</div>
+
+
 @section scripts
 {
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+
     <script>
         $(document).ready(function () {
             var range = document.getElementById('range');
@@ -79,7 +86,7 @@
 
             noUiSlider.create(range, {
                 start: [500, 100], // 4 handles, starting at...
-                margin: 300, // Handles must be at least 300 apart
+                margin: 0, // Handles must be at least 300 apart
                 limit: 1500, // ... but no more than 600
                 connect: true, // Display a colored bar between the handles
                 direction: 'ltr', // Put '0' at the bottom of the slider
@@ -100,13 +107,52 @@
 
             $("#searchButton").click(function () {
                 var link = "http://localhost:60235/api/statistics";
-
+                
                 $.get(link, {
                     phrase: $("#searchInputMy").val(), pricefrom: range.noUiSlider.get()[0], priceto: range.noUiSlider.get()[1]
                 })
-                .done(function (data) {
-                    alert("Data Loaded: " + data);
-                });
+                    .done(function (data) {
+                        var diameter = 500, 
+                        color = d3.scale.category20b();    
+
+                        var bubble = d3.layout.pack()
+                            .sort(null)
+                            .size([diameter, diameter])
+                            .padding(1.5);
+
+                        var svg = d3.select("#graph")
+                            .append("svg")
+                            .attr("width", diameter)
+                            .attr("height", diameter)
+                            .attr("class", "bubble");
+
+                        data = data.map(function (d) { d.value = +d["views"]; return d; });
+
+                        var nodes = bubble.nodes({ children: data }).filter(function (d) { return !d.children; });
+
+                        var bubbles = svg.append("g")
+                            .attr("transform", "translate(0,0)")
+                            .selectAll(".bubble")
+                            .data(nodes)
+                            .enter();
+
+                        bubbles.append("circle")
+                            .attr("r", function (d) { return d.r; })
+                            .attr("cx", function (d) { return d.x; })
+                            .attr("cy", function (d) { return d.y; })
+                            .style("fill", function (d) { return color(d.value); });
+
+                        bubbles.append("text")
+                            .attr("x", function (d) { return d.x; })
+                            .attr("y", function (d) { return d.y + 5; })
+                            .attr("text-anchor", "middle")
+                            .text(function (d) { return d["text"]; })
+                            .style({
+                                "fill": "white",
+                                "font-family": "Helvetica Neue, Helvetica, Arial, san-serif",
+                                "font-size": "12px"
+                            });
+                    });
             });
         });
     </script>

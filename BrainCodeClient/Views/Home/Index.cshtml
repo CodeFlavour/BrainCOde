@@ -216,7 +216,7 @@
 
                     $.getJSON("http://localhost:60235/api/search/GetFilterForOffer?id=" + data[0].id, function (data2) {                      
                          $("#tagDivResult").html("");
-
+                         $('#tagDiv').fadeIn();
                          $(data2).each(function (iterator, value) {
                              if(iterator < 11)
                                  {
@@ -227,14 +227,46 @@
                                 });
                 });
                         });
+                }
 
-                                    $("#tagDiv").fadeIn();
+                        //function searchOffers(title) {
+                        //    var url = "http://localhost:60235/api/search?";
+                        //    url = url + "title=null";
+                        //    url = url + "&phrase=" + title;
+                        //    $.getJSON(url, function (data) {
+                        //        $.getJSON("http://localhost:60235/api/search/GetFilterForOffer?id=" + data[0].id, function (data2) {
+                        //            console.log(data2);
+
+                        //            var url2 = "http://localhost:60235/api/search?";
+                        //            var notTitle = title.split(" ");
+                        //            nt = "";
+                        //            $(notTitle).each(function (i, v) {
+                        //                nt = i == 1 ? " " : "" + "-" + v;
+                        //            });
+                        //            //url2 = url2 + "phrase=" + nt;
+                        //            var filters = [];
+                        //            $(data2).each(function (i, v) {
+                        //                if (v.values.length > 0) {
+                        //                    filters[i-1] = {
+                        //                        parameterName: v.values[0].key,
+                        //                        parameterValue: v.values[0].value
+                        //                    };
+                        //                }
+                        //            });
+                        //            filters.push({ parameterName: "price_from", parameterValue: "0" });
+                        //            filters.push({ parameterName: "price_to", parameterValue: "99999999999999999999999" });
+                        //            url2 = url2 + "&parameters=" + JSON.stringify(filters);
+                        //            console.log(url2);
+                        //            $.getJSON(url2, function (data3) {
+                        //                console.log(data3);
+                        //            })
+                        //        });
+                        //    });
+                        //}
+                    </script>
                 }
                     
-                    
-
-        </script>
-    }
+                   
 
 
 
