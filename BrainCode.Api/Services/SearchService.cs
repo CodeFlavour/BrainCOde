@@ -1,4 +1,5 @@
-﻿using BrainCode.Api.Helpers;
+﻿using BrainCode.Api.Enums;
+using BrainCode.Api.Helpers;
 using BrainCode.Api.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -16,13 +17,27 @@ namespace BrainCode.Api.Services
 
         //private Dictionary<string, string> _headers = new Dictionary<string, string>();
 
-        public async Task<List<Offer>> SearchOffers(string title, string searchPhrase, List<Parameter> parameters)
+        public async Task<List<Offer>> SearchOffers(string title, string searchPhrase, List<Parameter> parameters, SortTypeEnum? sortType = null, SortDirectionEnum? sortDirection = null, long limit = 100)
         {
             var _headers = new List<Header>();
             var requestURL = _url + "offers";
             List<string> urlParameters = new List<string>();
             urlParameters.Add("country.code=PL");
             List<string> phrases = new List<string>();
+            if (sortType.HasValue && sortDirection.HasValue)
+            {
+                string sort = sortDirection.Value == SortDirectionEnum.Ascending ? "+" : "-";
+                switch (sortType.Value)
+                {
+                    case SortTypeEnum.Popularity:
+                    default:
+                        sort += "popularity";
+                        break;
+                }
+                urlParameters.Add("sort=" + sort);
+            }
+            urlParameters.Add("limit=" + limit.ToString());
+
             if (!string.IsNullOrEmpty(searchPhrase))
             {
                 phrases.Add(searchPhrase);
@@ -32,6 +47,7 @@ namespace BrainCode.Api.Services
                 //parameters.ForEach(x => phrases.Add(x.ParameterName + " " + x.ParameterValue));
                 parameters.ForEach(x => urlParameters.Add(x.ParameterName + "=" + x.ParameterValue));
             }
+
 
             if (phrases.Count > 0)
             {
