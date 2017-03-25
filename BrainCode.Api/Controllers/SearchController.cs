@@ -40,7 +40,6 @@ namespace BrainCode.Api.Controllers
                 unstringifiedParameters = JsonConvert.DeserializeObject<List<Parameter>>(parameters);
             }
             var foundOffers = searchService.SearchOffers(title, phrase, unstringifiedParameters).Result;
-            //var response = 
             return foundOffers;
         }
 

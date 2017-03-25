@@ -65,10 +65,10 @@ namespace BrainCode.Api.Services
 
             List<Statistic> statistics = new List<Statistic>();
 
-            foreach(var offer in offers)
+            Parallel.ForEach(offers, x =>
             {
-                statistics.Add(await GetStatistic(offer.ID, y => y.Name));
-            }
+                statistics.Add(GetStatistic(x.ID, y => y.Name).Result);
+            });
 
             return statistics;
         }

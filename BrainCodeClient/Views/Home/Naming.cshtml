@@ -45,7 +45,6 @@
     ViewBag.Title = "Alle Jak Nazwać?";
 }
 
-<!-- Wyszukiwanie-->
 <div class="row">
     <div class="col-lg-4" id="mainAlleCoImage">
         <img src="~/images/vizualization/alejaknazwacCollapsed.png" id="mainAlleCoImage" />
@@ -69,7 +68,7 @@
 </div>
 
 <div class="row">
-    <div id="graph"></div>
+    <div id="graph" style="text-align: center;"></div>
 </div>
 
 
@@ -85,9 +84,9 @@
             range.style.margin = '0 auto 30px';
 
             noUiSlider.create(range, {
-                start: [500, 100], // 4 handles, starting at...
-                margin: 0, // Handles must be at least 300 apart
-                limit: 1500, // ... but no more than 600
+                start: [500, 100],
+                margin: 100, 
+                limit: 1500, 
                 connect: true, // Display a colored bar between the handles
                 direction: 'ltr', // Put '0' at the bottom of the slider
                 orientation: 'horizontal', // Orient the slider vertically
@@ -106,12 +105,15 @@
             });
 
             $("#searchButton").click(function () {
+                $("#graph").html("");
+
                 var link = "http://localhost:60235/api/statistics";
+
                 
                 $.get(link, {
                     phrase: $("#searchInputMy").val(), pricefrom: range.noUiSlider.get()[0], priceto: range.noUiSlider.get()[1]
                 })
-                    .done(function (data) {
+                    .done(function (data) {                        
                         var diameter = 500, 
                         color = d3.scale.category20b();    
 
