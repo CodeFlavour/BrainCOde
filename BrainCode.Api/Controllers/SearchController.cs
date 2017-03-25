@@ -19,10 +19,12 @@ namespace BrainCode.Api.Controllers
         //{
         //    return "value";
         //}
+        private OfferDetailsService offerDetailService;
 
         public SearchController()
         {
             searchService = new SearchService();
+            offerDetailService = new OfferDetailsService();
         }
 
         // POST api/values
@@ -35,10 +37,29 @@ namespace BrainCode.Api.Controllers
         }
 
 
-        [HttpGet("{GetFilterForCategory}")]
+        [HttpGet("{GetFilterForOffer}")]
         public async Task<List<FilterDescriptor>> GetFilterDescriptorsForOffer(string id)
         {
-            return (await searchService.GetFiltersDataForCategory(id));
+            var offerDetails = offerDetailService.GetOfferDetails(id).Result;
+            var categoryID = offerDetails.Categories.First(x => x.Parent == "0").Id;
+            var newID = "-1";
+            while(newID!= categoryID)
+            {
+                newID = categoryID;
+                var category = offerDetails.Categories.FirstOrDefault(x => x.Parent == categoryID);
+                if (category != null)
+                {
+                    categoryID = category.Id;
+                }
+            }
+            var filterDescriptors = searchService.GetFiltersDataForCategory(categoryID).Result;
+            List<FilterDescriptor> result = new List<FilterDescriptor>();
+            foreach(var category in offerDetails.Attributes)
+            {
+                var descriptor = filterDescriptors.First(x => x.Name == category.Name);
+                result.Add(new FilterDescriptor() { ID = descriptor.ID, Name = descriptor.Name, Values = descriptor.Values.Where(x => category.Attributes.Contains(x.Name)).ToList() });
+            }
+            return result;
         }
     }
 }
