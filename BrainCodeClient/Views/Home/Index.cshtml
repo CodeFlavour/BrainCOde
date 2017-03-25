@@ -218,9 +218,10 @@
                          $("#tagDivResult").html("");
                          $('#tagDiv').fadeIn();
                          $(data2).each(function (iterator, value) {
-                             if(iterator < 11)
+                             if(value.values.length != 0)
                                  {
-                                    $("#tagDivResult").append('<div class="col-lg-3"> <input type="checkbox" checked>' + value.name + '</input> </div>'  );
+                                    console.log(value);
+                                    $("#tagDivResult").append('<div class="col-lg-3"> <input class="tagAtrribute" onchange="changeTagValues();" type="checkbox" id='+ value.values[0].key + 'name=' + value.values[0].value +' checked>' + value.name + '</input> </div>'  );
                                  }
 
                
@@ -228,6 +229,24 @@
                 });
                         });
                 }
+
+
+            function changeTagValues()
+            {
+                  var filters = [];
+                $('.tagAtrribute checked').each(function(i, obj) {
+                    filters.push({ parameterName: obj.id, parameterValue: obj.name });
+
+                    });
+                JSON.stringify(filters);
+
+                var allternativeUrl = "http://localhost:60235/api/search?"
+                allternativeUrl = allternativeUrl + "phrase=" + $('#searchInputMy').val() + "&parameters=" + JSON.stringify(filters);
+
+                 $.getJSON(allternativeUrl, function (data3) {
+                                        console.log(data3);
+                                    });
+            }
 
                         //function searchOffers(title) {
                         //    var url = "http://localhost:60235/api/search?";
