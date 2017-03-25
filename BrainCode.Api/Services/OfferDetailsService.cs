@@ -76,7 +76,7 @@ namespace BrainCode.Api.Services
 
             result.Views = Convert.ToInt32(responseJsonObject["views"].Value<string>());
 
-            result.Name = responseJsonObject["views"].Value<string>();
+            result.Name = responseJsonObject["name"].Value<string>();
 
             result.Description = responseJsonObject["description"]["plainText"].Value<string>();
 
