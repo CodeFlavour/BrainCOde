@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\SearchController.cs" />
+    <Compile Remove="Models\PagedResponse.cs" />
   </ItemGroup>
 
   <ItemGroup>
