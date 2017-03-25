@@ -38,23 +38,22 @@
     .hrBreakLine {
         border: 2px solid #f38148;
     }
-
 </style>
 
-@{ 
+@{
     ViewBag.Title = "Alle Jak Nazwać?";
 }
 
 <div class="row">
     <div class="col-lg-4" id="mainAlleCoImage">
-        <img src="~/images/vizualization/alejaknazwacCollapsed.png" id="mainAlleCoImage" />
+        <img src="~/images/alternativesearch/u3.png" id="mainAlleCoImage" />
     </div>
     <div class="col-lg-6 .nopadding">
         <div style="padding-top:33px;">
-            <input type="text" id="searchInputMy" class="form-control" placeholder="Co wystawiasz...?">
+            <input type="text" id="searchInputMy" class="form-control" placeholder="Wystawiwasz...?">
         </div>
     </div>
-        
+
     <div class="col-lg-2 .nopadding" style="padding-top:33px;">
         <button type="button" class="btn btn-default" id="searchButton">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -67,7 +66,14 @@
     <div id="range" class="col-md-8 col-xs-12"></div>
 </div>
 
-<a name="graph-anchor"></a>
+<hr class="hrBreakLine" />
+<div class="row" style="text-align: center;">
+    <img src="~/images/vizualization/alejaknazwacExpanded.png" class="alleImage" />
+</div>
+
+<div class="row" style="text-align: center; margin-top: 15px;" >
+    <a name="graph-anchor" id="graph-anchor">Załaduj dane</a>
+</div>
 
 <div class="row">
     <div id="graph" style="text-align: center;"></div>
@@ -87,8 +93,8 @@
 
             noUiSlider.create(range, {
                 start: [100, 500],
-                margin: 100, 
-                limit: 1500, 
+                margin: 100,
+                limit: 1500,
                 connect: true, // Display a colored bar between the handles
                 direction: 'ltr', // Put '0' at the bottom of the slider
                 orientation: 'horizontal', // Orient the slider vertically
@@ -111,7 +117,7 @@
 
                 var link = "http://localhost:60235/api/statistics";
 
-                
+
                 $.get(link, {
                     phrase: $("#searchInputMy").val(), pricefrom: range.noUiSlider.get()[0], priceto: range.noUiSlider.get()[1]
                 })
@@ -158,6 +164,8 @@
                             });
 
                         window.location.href = "#graph-anchor";
+
+                        $("#graph-anchor").text("");
                     })
                     .fail(function () {
                         alert("Wystąpił błąd");
