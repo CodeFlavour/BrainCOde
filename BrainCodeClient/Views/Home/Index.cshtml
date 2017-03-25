@@ -122,26 +122,12 @@
             </div>
         </div>
         <div class="col-lg-4 allternatywaDIV" style="background-color:red; height:500px;">
-            <div>
-                <div class="container">
-                    <div class="row" style="padding-top:5px;">
-                        <div class="col-lg-7">
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg==" alt="...">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Nazwa akucji</h4>
-                                    <p class="akucjaAllternatywaDescription">Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div id="allternatywaResultDIV">
+
             </div>
         </div>
+
+        
     </div>
 
     <!-- Koniec Aukcje-->
@@ -221,30 +207,47 @@
                              if(value.values.length != 0)
                                  {
                                     console.log(value);
-                                    $("#tagDivResult").append('<div class="col-lg-3"> <input class="tagAtrribute" onchange="changeTagValues();" type="checkbox" id='+ value.values[0].key + 'name=' + value.values[0].value +' checked>' + value.name + '</input> </div>'  );
+                                    $("#tagDivResult").append('<div class="col-lg-3"> <input class="tagAtrribute" name=' + value.values[0].value + ' onchange="changeTagValues();" type="checkbox" id="'+ value.values[0].key +  '" checked>' + value.name + '</input> </div>'  );
                                  }
 
                
                                 });
                 });
                         });
+                changeTagValues();
                 }
 
 
             function changeTagValues()
             {
                   var filters = [];
-                $('.tagAtrribute checked').each(function(i, obj) {
+                $('.tagAtrribute:checked').each(function(i, obj) {
                     filters.push({ parameterName: obj.id, parameterValue: obj.name });
-
+                       
                     });
-                JSON.stringify(filters);
 
-                var allternativeUrl = "http://localhost:60235/api/search?"
-                allternativeUrl = allternativeUrl + "phrase=" + $('#searchInputMy').val() + "&parameters=" + JSON.stringify(filters);
+                   filters.push({ parameterName: 'category.id', parameterValue: 165  });
+                    JSON.stringify(filters);
+
+                var allternativeUrl = "http://localhost:60235/api/search";
+                  nt = "";
+                
+                 $($('#searchInputMy').val().split(" ")).each(function (i, v) {
+                                        nt += i == 1 ? " " : "" + "-" + v;
+                                   });                  
+
+
+                allternativeUrl = allternativeUrl + "?phrase=" + nt + "&parameters=" + JSON.stringify(filters);
+                alert(allternativeUrl);
+                 $("#allternatywaResultDIV").html("");
+                console.log(filters);
+
+
 
                  $.getJSON(allternativeUrl, function (data3) {
-                                        console.log(data3);
+                                        $(data3).each(function (iterator, value) {
+                        $("#allternatywaResultDIV").append('<div class="container"> <div class="row" style= "padding-top:5px;" > <div class="col-lg-7"> <div class="media"> <div class="media-left">  <a href="#"> <img class="media-object akucjaAleCoZnalazloImages" src=" ' + value.photoUrl + '" alt="...">  </a> </div> <div class="media-body"> <h4 class="media-heading">' + value.name + '</h4> <p class="akucjaAllternatywaDescription"> Kup teraz ' + value.buyNowPrice + '</p>  </div>  </div>  </div>  </div> </div>')
+                    });
                                     });
             }
 
