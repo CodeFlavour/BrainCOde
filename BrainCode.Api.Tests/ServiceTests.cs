@@ -38,7 +38,11 @@ namespace BrainCode.Api.Tests
 
         public void AnalyzeServiceTest()
         {
+            AnalyzeService service = new AnalyzeService(@"C:\Data\stopwords.txt");
 
+            List<Statistic> statistic = service.Analyze("htc").Result;
+
+            Console.Read();
         }
 
         [TestMethod]

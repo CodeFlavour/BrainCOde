@@ -24,11 +24,15 @@ namespace BrainCode.Api.Services
             _stopwords = System.IO.File.ReadAllLines(stepwordsPath);
         }
 
-        public async Task Analyze(string searchPhrase)
+        public async Task<List<Statistic>> Analyze(string searchPhrase)
         {
             List<Offer> offers = await _searchService.SearchOffers(null, searchPhrase, null);
 
-            
+            List<Statistic> statistics = new List<Statistic>();
+
+            offers.ForEach(async x => statistics.Add(await Analyze(x.ID, y => y.Name)));
+
+            return statistics;
         }
 
         public async Task<Statistic> Analyze(string id, Func<OfferDetails, string> getStringToAnalyze)
