@@ -16,9 +16,7 @@ namespace BrainCode.Api.Tests
             List<Parameter> searchParameters = new List<Parameter>();
             //searchParameters.Add(new Parameter() { ParameterName = "Pamiêæ", ParameterValue = "16GB" });
             searchParameters.Add(new Parameter() { ParameterName = "Category.ID", ParameterValue = "165" });
-            List<Offer> result = service.SearchOffers(null, "htc pamiêæ 16GB", searchParameters).Result;
-            result = result;
-           
+            List<Offer> result = service.SearchOffers(null, "htc pamiêæ 16GB", searchParameters).Result;           
         }
     }
 }

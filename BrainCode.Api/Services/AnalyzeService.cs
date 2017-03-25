@@ -24,18 +24,53 @@ namespace BrainCode.Api.Services
             _stopwords = System.IO.File.ReadAllLines(stepwordsPath);
         }
 
-        public async Task<List<Statistic>> Analyze(string searchPhrase)
+        public async Task<List<ResultToken>> Analyze(string searchPhrase, decimal priceFrom, decimal priceTo)
         {
-            List<Offer> offers = await _searchService.SearchOffers(null, searchPhrase, null);
+            List<ResultToken> result = new List<ResultToken>();
+
+            List<Statistic> statistics = await GetStatistics(searchPhrase, priceFrom, priceTo);
+
+            foreach(var statistic in statistics)
+            {
+                foreach(var token in statistic.Tokens)
+                {
+                    ResultToken resultToken = result.FirstOrDefault(x => IsEqual(x.Text, token.Text));
+
+                    if (result != null)
+                    {
+                        resultToken.Views += statistic.Offer.Views;
+                    }
+                    else
+                    {
+                        result.Add(new ResultToken()
+                        {
+                            Text = token.Text,
+                            Views = statistic.Offer.Views
+                        });
+                    }
+                }
+            }
+
+            result.OrderBy(x => x.Views);
+
+            return result;
+        }
+
+        public async Task<List<Statistic>> GetStatistics(string searchPhrase, decimal priceFrom, decimal priceTo)
+        {
+            List<Offer> offers = await _searchService.SearchOffers(null, searchPhrase, new List<Parameter>() { new Parameter() { ParameterName = "price_from", ParameterValue = priceFrom.ToString() }, new Parameter() { ParameterName = "price_to", ParameterValue = priceTo.ToString() } });
 
             List<Statistic> statistics = new List<Statistic>();
 
-            offers.ForEach(async x => statistics.Add(await Analyze(x.ID, y => y.Name)));
+            foreach(var offer in offers)
+            {
+                statistics.Add(await GetStatistic(offer.ID, y => y.Name));
+            }
 
             return statistics;
         }
 
-        public async Task<Statistic> Analyze(string id, Func<OfferDetails, string> getStringToAnalyze)
+        public async Task<Statistic> GetStatistic(string id, Func<OfferDetails, string> getStringToAnalyze)
         {
             OfferDetails offerDetails = await _offerDetailsService.GetOfferDetails(id);
 

@@ -29,19 +29,25 @@ namespace BrainCode.Api.Tests
         }
 
         [TestMethod]
-        public void AnalyzeOneServiceTest()
+        public void GetStatisticTest()
         {
             AnalyzeService service = new AnalyzeService(@"C:\Data\stopwords.txt");
-
-            Statistic statistic = service.Analyze("6754645454", x => x.Name).Result;            
+            Statistic statistic = service.GetStatistic("6754645454", x => x.Name).Result;
         }
 
-        public void AnalyzeServiceTest()
+        [TestMethod]
+        public void GetStatisticsTest()
         {
             AnalyzeService service = new AnalyzeService(@"C:\Data\stopwords.txt");
+            List<Statistic> statistic = service.GetStatistics("htc", 500.50M, 1000.50M).Result;
+        }
 
-            List<Statistic> statistic = service.Analyze("htc").Result;
 
+        [TestMethod]
+        public void AnalizeServiceTest()
+        {
+            AnalyzeService service = new AnalyzeService(@"C:\Data\stopwords.txt");
+            List<ResultToken> statistic = service.Analyze("htc", 500.50M, 1000.50M).Result;
             Console.Read();
         }
 
