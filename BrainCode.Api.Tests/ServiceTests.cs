@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BrainCode.Api.Services;
 using System.Collections.Generic;
 using BrainCode.Api.Models;
+using BrainCode.Api.Models.Analyze;
 
 namespace BrainCode.Api.Tests
 {
@@ -25,6 +26,15 @@ namespace BrainCode.Api.Tests
             OfferDetailsService service = new OfferDetailsService();
             
             OfferDetails details = service.GetOfferDetails("6754645454").Result;
+        }
+
+        [TestMethod]
+        public void AnalyzeServiceTest()
+        {
+            AnalyzeService service = new AnalyzeService(@"C:\Data\stopwords.txt");
+
+            Statistic statistic = service.Analyze("6754645454", x => x.Name).Result;
+            
         }
     }
 }
