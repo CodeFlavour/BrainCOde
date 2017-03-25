@@ -15,8 +15,9 @@ namespace BrainCode.Api.Tests
             SearchService service = new SearchService();
             List<Parameter> searchParameters = new List<Parameter>();
             //searchParameters.Add(new Parameter() { ParameterName = "Pamiêæ", ParameterValue = "16GB" });
-            searchParameters.Add(new Parameter() { ParameterName = "Category.ID", ParameterValue = "165" });
-            List<Offer> result = service.SearchOffers(null, "htc pamiêæ 16GB", searchParameters).Result;           
+            searchParameters.Add(new Parameter() { ParameterName = "category.id", ParameterValue = "165" });
+            List<Offer> result = service.SearchOffers(null, "htc pamiêæ 16GB", searchParameters, Enums.SortTypeEnum.Popularity, Enums.SortDirectionEnum.Ascending).Result;
+           
         }
     }
 }
