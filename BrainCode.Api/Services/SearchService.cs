@@ -13,23 +13,31 @@ namespace BrainCode.Api.Services
 {
     public class SearchService
     {
-        private string _url = "https://allegroapi.io/offers";
+        private string _url = "https://allegroapi.io/";
 
         //private Dictionary<string, string> _headers = new Dictionary<string, string>();
 
         public async Task<List<Offer>> SearchOffers(string title, string searchPhrase, List<Parameter> parameters)
         {
             var _headers = new List<Header>();
-            var requestURL = _url;
+            var requestURL = _url + "offers";
             List<string> urlParameters = new List<string>();
             urlParameters.Add("country.code=PL");
+            List<string> phrases = new List<string>();
             if (!string.IsNullOrEmpty(searchPhrase))
             {
-                urlParameters.Add("phrase=" + searchPhrase);
+                phrases.Add(searchPhrase);
             }
             if (parameters != null)
             {
+                //parameters.ForEach(x => phrases.Add(x.ParameterName + " " + x.ParameterValue));
                 parameters.ForEach(x => urlParameters.Add(x.ParameterName + "=" + x.ParameterValue));
+            }
+
+            if (phrases.Count > 0)
+            {
+                var phrase = string.Join(" ", phrases);
+                urlParameters.Add("phrase=" + phrase);
             }
 
             HttpClient client = new HttpClient();
@@ -40,7 +48,7 @@ namespace BrainCode.Api.Services
             _headers.Add(bearerHeader);
 
 
-            for (int i = 0; i< urlParameters.Count; i++)
+            for (int i = 0; i < urlParameters.Count; i++)
             {
                 requestURL += (i == 0 ? "?" : "&") + urlParameters[i];
             }
@@ -49,7 +57,7 @@ namespace BrainCode.Api.Services
                 RequestUri = new Uri(requestURL),
                 Method = HttpMethod.Get,
             };
-            
+
             foreach (var header in _headers)
             {
                 request.Headers.Add(header.Name, header.Value);
@@ -75,6 +83,47 @@ namespace BrainCode.Api.Services
                 rVal.Add(new Offer(item));
             }
             return rVal;
+        }
+
+        public async Task<List<FilterDescriptor>> GetFiltersDataForCategory(string categoryID)
+        {
+            var _headers = new List<Header>();
+            var requestURL = _url + "offer-filters";
+            List<string> urlParameters = new List<string>();
+            urlParameters.Add("country.code=PL");
+            urlParameters.Add("category.id=" + categoryID);
+
+            HttpClient client = new HttpClient();
+            _headers.Add(new Header("User-Agent", "hackaton2017 (Client-Id 656cbe47-b17d-46c2-bae1-3222c8777d5b) Platform"));
+            _headers.Add(new Header("Api-Key", "eyJjbGllbnRJZCI6ImE0MWY1YjJhLThlODctNGI4Yi1iNmZlLTc0Y2M3NjM3MjBkNyJ9.ogVV_a9RUOMa1OWFZOTmgTkdk-U37vTliDCBUQ1YySU="));
+            _headers.Add(new Header("Accept", "application / vnd.allegro.public.v1+json"));
+            Header bearerHeader = await BearerHelper.GetBearerHeader();
+            _headers.Add(bearerHeader);
+
+
+            for (int i = 0; i < urlParameters.Count; i++)
+            {
+                requestURL += (i == 0 ? "?" : "&") + urlParameters[i];
+            }
+            var request = new HttpRequestMessage()
+            {
+                RequestUri = new Uri(requestURL),
+                Method = HttpMethod.Get,
+            };
+
+            foreach (var header in _headers)
+            {
+                request.Headers.Add(header.Name, header.Value);
+            }
+
+            var response = await client.SendAsync(request);
+            string responseObject = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+            var responseJsonObject = (JObject)JsonConvert.DeserializeObject(responseObject);
+            return responseJsonObject["filters"].ToObject<List<FilterDescriptor>>();
         }
     }
 }

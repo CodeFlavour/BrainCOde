@@ -24,7 +24,7 @@ namespace BrainCode.Api.Tests
         public void OfferDetailsServiceTest()
         {
             OfferDetailsService service = new OfferDetailsService();
-            
+
             OfferDetails details = service.GetOfferDetails("6754645454").Result;
         }
 
@@ -35,6 +35,14 @@ namespace BrainCode.Api.Tests
 
             Statistic statistic = service.Analyze("6754645454", x => x.Name).Result;
             
+        }
+
+        [TestMethod]
+        public void FilterServiceTest()
+        {
+            SearchService service = new SearchService();
+
+            List<FilterDescriptor> details = service.GetFiltersDataForCategory("165").Result;
         }
     }
 }
