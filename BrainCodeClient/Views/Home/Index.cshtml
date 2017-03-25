@@ -121,7 +121,7 @@
 
             </div>
         </div>
-        <div class="col-lg-4 allternatywaDIV" style="background-color:red; height:500px;">
+        <div class="col-lg-4 allternatywaDIV" style="border-left:dashed">
             <div id="allternatywaResultDIV">
 
             </div>
@@ -139,33 +139,50 @@
                 $("#imageAleCoZnalazlo").click(function () {
                     hideAlleImages();
                     $(".akucjaAllternatywaDescription").fadeOut();
+                    $(".akucjaAllternatywaName").fadeOut();
+
                     $("#imageAleCoZnalazlo").attr("src", "../images/allternatywa/alecoznalazloCollapsed.png");
                     $(".alleCoZnalazloDIV").animate({ width: '760px' }, 500);
                     $(".allternatywaDIV").animate({ width: '380px' }, 500);
                     $("#imageAllternatywa").attr("src", "../images/allternatywa/aleternatywaExpanded.png");
+
                     $(".akucjaAleCoZnalazloDescription").fadeIn();
+                    $(".akucjaAleCoZnalazloName").fadeIn();
                     showAlleImages();
                 });
 
                 $("#imageAllternatywa").click(function () {
                     hideAlleImages();
                     $(".akucjaAleCoZnalazloDescription").fadeOut();
+                    $(".akucjaAleCoZnalazloName").fadeOut();
+
                     $("#imageAllternatywa").attr("src", "../images/allternatywa/alejaknazwacCollapsed.png");
                     $(".alleCoZnalazloDIV").animate({ width: '380px' }, 500);
                     $(".allternatywaDIV").animate({ width: '760px' }, 500);
                     $("#imageAleCoZnalazlo").attr("src", "../images/allternatywa/alecoznalazloExpanded.png");
+
                     $(".akucjaAllternatywaDescription").fadeIn();
+                    $(".akucjaAllternatywaName").fadeIn();
+                    
                     showAlleImages();
+                    $('#tagDiv').fadeIn();
                 });
 
                 $("#searchButton").click(function () {
                     hideAlleImages();
                     $("#tagDiv").fadeOut();
                     $(".akucjaAllternatywaDescription").fadeOut();
+                    $(".akucjaAllternatywaName").fadeOut();
+
                     $(".alleCoZnalazloDIV").animate({ width: '760px' }, 500);
                     $(".allternatywaDIV").animate({ width: '380px' }, 500);
+
                     $(".akucjaAleCoZnalazloDescription").fadeIn();
+                    $(".akucjaAleCoZnalazloName").fadeIn();
+                    
                     showAlleImages();
+
+                     searchOffers($('#searchInputMy').val());
                 });
 
             })
@@ -180,11 +197,11 @@
                 $("#allternatywaTopicDIV").fadeIn();
             }
 
-            $(function () {
-                $("#searchButton").click(function () {
-                    searchOffers($('#searchInputMy').val());
-                });
-            });
+            //$(function () {
+            //    $("#searchButton").click(function () {
+                   
+            //    });
+            //});
 
             function searchOffers(title) {
                 var url = "http://localhost:60235/api/search?";
@@ -196,13 +213,13 @@
                     $("#alleCoZnalazoloResultDIV").html("");
 
                     $(data).each(function (iterator, value) {
-                        $("#alleCoZnalazoloResultDIV").append('<div class="container"> <div class="row" style= "padding-top:5px;" > <div class="col-lg-7"> <div class="media"> <div class="media-left">  <a href="#"> <img class="media-object akucjaAleCoZnalazloImages" src=" ' + value.photoUrl + '" alt="...">  </a> </div> <div class="media-body"> <h4 class="media-heading">' + value.name + '</h4> <p class="akucjaAleCoZnalazloDescription"> Kup teraz ' + value.buyNowPrice + '</p>  </div>  </div>  </div>  </div> </div>')
+                        $("#alleCoZnalazoloResultDIV").append('<div class="container"> <div class="row" style= "padding-top:5px;" > <div class="col-lg-7"> <div class="media"> <div class="media-left">  <a href="#"> <img class="media-object akucjaAleCoZnalazloImages" src=" ' + value.photoUrl + '" alt="...">  </a> </div> <div class="media-body"> <h4 class="media-heading akucjaAleCoZnalazloName">' + value.name + '</h4> <p class="akucjaAleCoZnalazloDescription"> Kup teraz ' + value.buyNowPrice + '</p>  </div>  </div>  </div>  </div> </div>')
                     });
 
 
                     $.getJSON("http://localhost:60235/api/search/GetFilterForOffer?id=" + data[0].id, function (data2) {                      
                          $("#tagDivResult").html("");
-                         $('#tagDiv').fadeIn();
+
                          $(data2).each(function (iterator, value) {
                              if(value.values.length != 0)
                                  {
@@ -237,58 +254,20 @@
                                    });                  
 
 
-                allternativeUrl = allternativeUrl + "?phrase=" + nt + "&parameters=" + JSON.stringify(filters);
-                alert(allternativeUrl);
+                allternativeUrl = allternativeUrl + "?parameters=" + JSON.stringify(filters);
                  $("#allternatywaResultDIV").html("");
-                console.log(filters);
-
-
 
                  $.getJSON(allternativeUrl, function (data3) {
                                         $(data3).each(function (iterator, value) {
-                        $("#allternatywaResultDIV").append('<div class="container"> <div class="row" style= "padding-top:5px;" > <div class="col-lg-7"> <div class="media"> <div class="media-left">  <a href="#"> <img class="media-object akucjaAleCoZnalazloImages" src=" ' + value.photoUrl + '" alt="...">  </a> </div> <div class="media-body"> <h4 class="media-heading">' + value.name + '</h4> <p class="akucjaAllternatywaDescription"> Kup teraz ' + value.buyNowPrice + '</p>  </div>  </div>  </div>  </div> </div>')
+                        $("#allternatywaResultDIV").append('<div class="container"> <div class="row" style= "padding-top:5px;" > <div class="col-lg-7"> <div class="media"> <div class="media-left">  <a href="#"> <img class="media-object akucjaAleCoZnalazloImages" src=" ' + value.photoUrl + '" alt="...">  </a> </div> <div class="media-body"> <h4 class="media-heading akucjaAllternatywaName">' + value.name + '</h4> <p class="akucjaAllternatywaDescription"> Kup teraz ' + value.buyNowPrice + '</p>  </div>  </div>  </div>  </div> </div>')
                     });
                                     });
+                alert($(".allternatywaDIV").css("width"))
+                 if($(".allternatywaDIV").css("width") < '650')
+                     {
+                       $(".akucjaAllternatywaDescription").fadeOut();
+                        $(".akucjaAllternatywaName").fadeOut();
+                    }
             }
-
-                        //function searchOffers(title) {
-                        //    var url = "http://localhost:60235/api/search?";
-                        //    url = url + "title=null";
-                        //    url = url + "&phrase=" + title;
-                        //    $.getJSON(url, function (data) {
-                        //        $.getJSON("http://localhost:60235/api/search/GetFilterForOffer?id=" + data[0].id, function (data2) {
-                        //            console.log(data2);
-
-                        //            var url2 = "http://localhost:60235/api/search?";
-                        //            var notTitle = title.split(" ");
-                        //            nt = "";
-                        //            $(notTitle).each(function (i, v) {
-                        //                nt = i == 1 ? " " : "" + "-" + v;
-                        //            });
-                        //            //url2 = url2 + "phrase=" + nt;
-                        //            var filters = [];
-                        //            $(data2).each(function (i, v) {
-                        //                if (v.values.length > 0) {
-                        //                    filters[i-1] = {
-                        //                        parameterName: v.values[0].key,
-                        //                        parameterValue: v.values[0].value
-                        //                    };
-                        //                }
-                        //            });
-                        //            filters.push({ parameterName: "price_from", parameterValue: "0" });
-                        //            filters.push({ parameterName: "price_to", parameterValue: "99999999999999999999999" });
-                        //            url2 = url2 + "&parameters=" + JSON.stringify(filters);
-                        //            console.log(url2);
-                        //            $.getJSON(url2, function (data3) {
-                        //                console.log(data3);
-                        //            })
-                        //        });
-                        //    });
-                        //}
                     </script>
                 }
-                    
-                   
-
-
-
