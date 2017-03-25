@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainCode.Api", "BrainCode.Api\BrainCode.Api.csproj", "{340883DA-62F9-4C45-B9A4-FB06FED31057}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PentaCoders - BrainCode", "PentaCoders - BrainCode.csproj", "{E86EB2FF-B147-4F87-8E5A-8732B4AC9D8A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrainCode.Api.Tests", "BrainCode.Api.Tests\BrainCode.Api.Tests.csproj", "{4F29ED29-4FDE-4822-A36C-D6581D890061}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainCode.Api", "BrainCode.Api\BrainCode.Api.csproj", "{340883DA-62F9-4C45-B9A4-FB06FED31057}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainCode.Api.Tests", "BrainCode.Api.Tests\BrainCode.Api.Tests.csproj", "{4F29ED29-4FDE-4822-A36C-D6581D890061}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainCodeClient", "BrainCodeClient\BrainCodeClient.csproj", "{7064DAAB-804E-4F82-865B-0DA4EC54F888}"
 EndProject
@@ -15,6 +17,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E86EB2FF-B147-4F87-8E5A-8732B4AC9D8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E86EB2FF-B147-4F87-8E5A-8732B4AC9D8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E86EB2FF-B147-4F87-8E5A-8732B4AC9D8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E86EB2FF-B147-4F87-8E5A-8732B4AC9D8A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{340883DA-62F9-4C45-B9A4-FB06FED31057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{340883DA-62F9-4C45-B9A4-FB06FED31057}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{340883DA-62F9-4C45-B9A4-FB06FED31057}.Release|Any CPU.ActiveCfg = Release|Any CPU
