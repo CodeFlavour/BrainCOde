@@ -62,6 +62,7 @@ namespace BrainCode.Api.Services
         {
             List<Offer> offers = await _searchService.SearchOffers(null, searchPhrase, new List<Parameter>() { new Parameter() { ParameterName = "price_from", ParameterValue = priceFrom.ToString() }, new Parameter() { ParameterName = "price_to", ParameterValue = priceTo.ToString() } }, Enums.SortTypeEnum.Popularity, Enums.SortDirectionEnum.Descending, 100);
 
+
             List<Statistic> statistics = new List<Statistic>();
 
             foreach(var offer in offers)
