@@ -7,7 +7,11 @@ namespace BrainCode.Api.Enums
 {
     public enum SortTypeEnum
     {
+        Name,
+        Price,
+        EndTime,
         Popularity,
-
+        WithDeliveryPrice,
+        Relevance
     }
 }

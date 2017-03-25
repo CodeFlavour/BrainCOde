@@ -7,10 +7,12 @@ using BrainCode.Api.Models;
 using BrainCode.Api.Services;
 using BrainCode.Api.Helpers;
 using BrainCode.Api.Models.Analyze;
+using Microsoft.AspNetCore.Cors;
 
 namespace BrainCode.Api.Controllers
 {
     [Route("api/Statistics")]
+    [EnableCors("AllowAllOrigin")]
     public class StatisticsController : Controller
     {
         private AnalyzeService _analyzeService;
@@ -23,7 +25,6 @@ namespace BrainCode.Api.Controllers
         [HttpGet()]
         public async Task<List<ResultToken>> Get(string phrase, decimal priceFrom, decimal priceTo)
         {
-
             return await _analyzeService.Analyze(phrase, priceFrom, priceTo);
         }
     }

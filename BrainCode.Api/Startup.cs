@@ -29,6 +29,9 @@ namespace BrainCode.Api
         {
             // Add framework services.
             services.AddMvc();
+
+            services.AddCors(x => x.AddPolicy("AllowAllOrigin",
+            builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +41,12 @@ namespace BrainCode.Api
             loggerFactory.AddDebug();
 
             app.UseMvc();
+
+            app.UseCors(builder =>
+                builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+    );
         }
     }
 }

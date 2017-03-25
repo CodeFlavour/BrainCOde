@@ -28,7 +28,21 @@ namespace BrainCode.Api.Services
             {
                 string sort = sortDirection.Value == SortDirectionEnum.Ascending ? "+" : "-";
                 switch (sortType.Value)
-                {
+                { case SortTypeEnum.Name:
+                        sort += "name";
+                        break;
+                    case SortTypeEnum.Price:
+                        sort += "price";
+                        break;
+                    case SortTypeEnum.EndTime:
+                        sort += "endTime";
+                        break;
+                    case SortTypeEnum.WithDeliveryPrice:
+                        sort += "withDeliveryPrice";
+                        break;
+                    case SortTypeEnum.Relevance:
+                        sort += "relevance";
+                        break;
                     case SortTypeEnum.Popularity:
                     default:
                         sort += "popularity";
