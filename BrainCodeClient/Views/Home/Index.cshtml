@@ -143,14 +143,21 @@
 
                         $(function () {
                             $("#searchButton").click(function () {
-                                searchOffers();
+                                searchOffers($('#searchInputMy').val());
                             });
                         });
 
                         function searchOffers(title) {
-                            $.post("http://localhost:60235/api/search", {
-                                title: null, phrase: title, parameters: null }, function (data) {
+                            var url = "http://localhost:60235/api/search?";
+                            url = url + "title=null";
+                            url = url + "&phrase=" + title;
+                           // url = url + "&parameters;
+                            $.getJSON(url, function (data) {
                                 console.log(data);
+                                //render results from data
+                                $.getJSON("http://localhost:60235/api/search/GetFilterForOffer?id=" + data[0].id, function (data2) {
+                                    console.log(data2);
+                                });
                             });
                         }
                     </script>
