@@ -121,7 +121,7 @@
                                     showAlleImages();                                
                             });
 
-                            $("#imageAllternatywa").click(function () {                                
+                            $("#imageAllternatywa").click(function (searchInputMy) {                                
                                     hideAlleImages();
                                     $(".alleCoZnalazloDIV").animate({ width: '380px' }, 500);
                                     $(".allternatywaDIV").animate({ width: '760px' }, 500);
@@ -140,7 +140,19 @@
                             $("#alleCoZnalazloTopicDIV").fadeIn();
                             $("#allternatywaTopicDIV").fadeIn();
                         }
-                                                
+
+                        $(function () {
+                            $("#searchButton").click(function () {
+                                searchOffers();
+                            });
+                        });
+
+                        function searchOffers(title) {
+                            $.post("http://localhost:60235/api/search", {
+                                title: null, phrase: title, parameters: null }, function (data) {
+                                console.log(data);
+                            });
+                        }
                     </script>
                 }
 
