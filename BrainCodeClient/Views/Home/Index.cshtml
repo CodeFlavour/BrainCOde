@@ -9,9 +9,10 @@
 
 
     #mainAlleCoImage {
-        width:300px;
+        width: 300px;
         height: 100px;
     }
+
     #searchInputMy {
         border: 3px solid green;
         margin: auto;
@@ -25,10 +26,12 @@
         width: 90% !important;
         height: 40px;
     }
+
     .nopadding {
         padding: 0 !important;
         margin: 0 !important;
     }
+
     .alleCenterImageDiv {
         position: absolute;
         left: 50%;
@@ -37,7 +40,7 @@
     }
 
     .alleImage {
-        height:40px;
+        height: 40px;
     }
 
     .hrBreakLine {
@@ -49,103 +52,90 @@
     }
 
     #allternatywaTopicDIV {
-        
     }
 
-    .akucjaAleCoZnalazloDescription{
-
+    .akucjaAleCoZnalazloDescription {
     }
 
-    /*.akucjaAleCoZnalazloImages {
-           width: 64px;
-           height: 64px;
+    .akucjaAleCoZnalazloImages{
+           width: 84px;
+           height: 84px;
     }
 
-    .akucjaAllternatywaImages {
+    .akucjaAllternatywaImages{
         width: 64px;
-           height: 64px;
-    }*/
+        height: 64px;
+    }
 
     .akucjaAllternatywaDescription {
-
     }
-    
 </style>
 <!-- Wyszukiwanie-->
-    <div class="row">
-        <div class="col-lg-4" id="mainAlleCoImage">
-            <img src="~/images/alternativesearch/u3.png" id="mainAlleCoImage" />
-        </div>
-        <div class="col-lg-6 .nopadding">
-            <div style="padding-top:33px;">
-                <input type="text" id="searchInputMy" class="form-control"  placeholder="Szukasz...?" >
-            </div>
-        </div>
-        <div class="col-lg-2 .nopadding" style="padding-top:33px;">            
-            <button type="button" class="btn btn-default" id="searchButton">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            </button>
+<div class="row">
+    <div class="col-lg-4" id="mainAlleCoImage">
+        <img src="~/images/alternativesearch/u3.png" id="mainAlleCoImage" />
+    </div>
+    <div class="col-lg-6 .nopadding">
+        <div style="padding-top:33px;">
+            <input type="text" id="searchInputMy" class="form-control" placeholder="Szukasz...?">
         </div>
     </div>
+    <div class="col-lg-2 .nopadding" style="padding-top:33px;">
+        <button type="button" class="btn btn-default" id="searchButton">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </button>
+    </div>
+</div>
 
-    <hr class="hrBreakLine"/>
-<!-- Koniec Wyszukiwanie-->
-
-<!-- Nazwy gridów-->
-<div style="padding-top:5%">
-    <div class="row">
-        <div class="col-lg-8 alleCoZnalazloDIV">
-            <div class="alleCenterImageDiv" id="alleCoZnalazloTopicDIV">
-                <img src="~/images/allternatywa/alecoznalazloExpanded.png" class="alleImage" id="imageAleCoZnalazlo" />
-            </div>
-        </div>
-        <div class="col-lg-4 allternatywaDIV">
-            <div class="alleCenterImageDiv" id="allternatywaTopicDIV">
-                <img src="~/images/allternatywa/aleternatywaCollapsed.png" class="alleImage" id="imageAllternatywa" />
-            </div>
-        </div>
+<hr class="hrBreakLine" />
+<div id="tagDiv" class="container">
+    <div class="row" id="tagDivResult">
 
     </div>
 </div>
-<!-- Koniec Nazwy gridów-->
 
-<!-- Aukcje-->
-<div class="row" style="padding-top:50px;">
-    <div class="col-lg-8 alleCoZnalazloDIV">
-        <div>
-            <div class="container">
-                <div class="row" style="padding-top:5px;">
-                    <div class="col-lg-7">
-                        <div class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg==" alt="...">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nazwa akucji</h4>
-                                <p class="akucjaAleCoZnalazloDescription">Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
+<hr class="hrBreakLine" />
+    <!-- Koniec Wyszukiwanie-->
+    <!-- Nazwy gridów-->
+    <div style="padding-top:5%">
+        <div class="row">
+            <div class="col-lg-8 alleCoZnalazloDIV">
+                <div class="alleCenterImageDiv" id="alleCoZnalazloTopicDIV">
+                    <img src="~/images/allternatywa/alecoznalazloExpanded.png" class="alleImage" id="imageAleCoZnalazlo" />
+                </div>
             </div>
+            <div class="col-lg-4 allternatywaDIV">
+                <div class="alleCenterImageDiv" id="allternatywaTopicDIV">
+                    <img src="~/images/allternatywa/aleternatywaCollapsed.png" class="alleImage" id="imageAllternatywa" />
+                </div>
+            </div>
+
         </div>
     </div>
-    <div class="col-lg-4 allternatywaDIV" style="background-color:red; height:500px;">
-        <div>
-            <div class="container">
-                <div class="row" style="padding-top:5px;">
-                    <div class="col-lg-7">
-                        <div class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg==" alt="...">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nazwa akucji</h4>
-                                <p class="akucjaAllternatywaDescription">Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis </p>
+    <!-- Koniec Nazwy gridów-->
+
+    <!-- Aukcje-->
+    <div class="row" style="padding-top:50px;">
+        <div class="col-lg-8 alleCoZnalazloDIV">
+            <div id="alleCoZnalazoloResultDIV">
+
+            </div>
+        </div>
+        <div class="col-lg-4 allternatywaDIV" style="background-color:red; height:500px;">
+            <div>
+                <div class="container">
+                    <div class="row" style="padding-top:5px;">
+                        <div class="col-lg-7">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2MDkzNzUiIHk9IjMyIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9nPjwvc3ZnPg==" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Nazwa akucji</h4>
+                                    <p class="akucjaAllternatywaDescription">Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis Opis </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -153,80 +143,98 @@
             </div>
         </div>
     </div>
-</div>
-          
-<!-- Koniec Aukcje-->
 
-            @section scripts
+    <!-- Koniec Aukcje-->
+
+    @section scripts
             {
-                    <script>
-                        $(function () {
-                            $("#imageAleCoZnalazlo").click(function () {                               
-                                hideAlleImages();
-                                $(".akucjaAllternatywaDescription").fadeOut();
-                                    $("#imageAleCoZnalazlo").attr("src", "../images/allternatywa/alecoznalazloCollapsed.png");
-                                    $(".alleCoZnalazloDIV").animate({ width: '760px' }, 500);
-                                    $(".allternatywaDIV").animate({ width: '380px' }, 500);    
-                                    $("#imageAllternatywa").attr("src", "../images/allternatywa/aleternatywaExpanded.png");
-                                    $(".akucjaAleCoZnalazloDescription").fadeIn();
-                                    showAlleImages();                                
-                            });
+        <script>
+            $(function () {
+                $("#imageAleCoZnalazlo").click(function () {
+                    hideAlleImages();
+                    $(".akucjaAllternatywaDescription").fadeOut();
+                    $("#imageAleCoZnalazlo").attr("src", "../images/allternatywa/alecoznalazloCollapsed.png");
+                    $(".alleCoZnalazloDIV").animate({ width: '760px' }, 500);
+                    $(".allternatywaDIV").animate({ width: '380px' }, 500);
+                    $("#imageAllternatywa").attr("src", "../images/allternatywa/aleternatywaExpanded.png");
+                    $(".akucjaAleCoZnalazloDescription").fadeIn();
+                    showAlleImages();
+                });
 
-                            $("#imageAllternatywa").click(function () {                                
-                                hideAlleImages();                                
-                                $(".akucjaAleCoZnalazloDescription").fadeOut();
-                                $("#imageAllternatywa").attr("src", "../images/allternatywa/alejaknazwacCollapsed.png");
-                                    $(".alleCoZnalazloDIV").animate({ width: '380px' }, 500);
-                                    $(".allternatywaDIV").animate({ width: '760px' }, 500);
-                                    $("#imageAleCoZnalazlo").attr("src", "../images/allternatywa/alecoznalazloExpanded.png");
-                                    $(".akucjaAllternatywaDescription").fadeIn();
-                                    showAlleImages();
-                            });
+                $("#imageAllternatywa").click(function () {
+                    hideAlleImages();
+                    $(".akucjaAleCoZnalazloDescription").fadeOut();
+                    $("#imageAllternatywa").attr("src", "../images/allternatywa/alejaknazwacCollapsed.png");
+                    $(".alleCoZnalazloDIV").animate({ width: '380px' }, 500);
+                    $(".allternatywaDIV").animate({ width: '760px' }, 500);
+                    $("#imageAleCoZnalazlo").attr("src", "../images/allternatywa/alecoznalazloExpanded.png");
+                    $(".akucjaAllternatywaDescription").fadeIn();
+                    showAlleImages();
+                });
 
-                            $("#searchButton").click(function () {
-                                hideAlleImages();
-                                $(".akucjaAllternatywaDescription").fadeOut();
-                                $(".alleCoZnalazloDIV").animate({ width: '760px' }, 500);
-                                $(".allternatywaDIV").animate({ width: '380px' }, 500);
-                                $(".akucjaAleCoZnalazloDescription").fadeIn();
-                                showAlleImages();
-                            });
-                            
-                        })
+                $("#searchButton").click(function () {
+                    hideAlleImages();
+                    $("#tagDiv").fadeOut();
+                    $(".akucjaAllternatywaDescription").fadeOut();
+                    $(".alleCoZnalazloDIV").animate({ width: '760px' }, 500);
+                    $(".allternatywaDIV").animate({ width: '380px' }, 500);
+                    $(".akucjaAleCoZnalazloDescription").fadeIn();
+                    showAlleImages();
+                });
 
-                        function hideAlleImages()
-                        {
-                            $("#alleCoZnalazloTopicDIV").fadeOut();
-                            $("#allternatywaTopicDIV").fadeOut();
-                        }
+            })
 
-                        function showAlleImages()
-                        {
-                            $("#alleCoZnalazloTopicDIV").fadeIn();
-                            $("#allternatywaTopicDIV").fadeIn();
-                        }
+            function hideAlleImages() {
+                $("#alleCoZnalazloTopicDIV").fadeOut();
+                $("#allternatywaTopicDIV").fadeOut();
+            }
 
-                        $(function () {
-                            $("#searchButton").click(function () {
-                                searchOffers($('#searchInputMy').val());
-                            });
+            function showAlleImages() {
+                $("#alleCoZnalazloTopicDIV").fadeIn();
+                $("#allternatywaTopicDIV").fadeIn();
+            }
+
+            $(function () {
+                $("#searchButton").click(function () {
+                    searchOffers($('#searchInputMy').val());
+                });
+            });
+
+            function searchOffers(title) {
+                var url = "http://localhost:60235/api/search?";
+                url = url + "title=null";
+                url = url + "&phrase=" + title;
+                // url = url + "&parameters;
+                $.getJSON(url, function (data) {
+                   
+                    $("#alleCoZnalazoloResultDIV").html("");
+
+                    $(data).each(function (iterator, value) {
+                        $("#alleCoZnalazoloResultDIV").append('<div class="container"> <div class="row" style= "padding-top:5px;" > <div class="col-lg-7"> <div class="media"> <div class="media-left">  <a href="#"> <img class="media-object akucjaAleCoZnalazloImages" src=" ' + value.photoUrl + '" alt="...">  </a> </div> <div class="media-body"> <h4 class="media-heading">' + value.name + '</h4> <p class="akucjaAleCoZnalazloDescription"> Kup teraz ' + value.buyNowPrice + '</p>  </div>  </div>  </div>  </div> </div>')
+                    });
+
+
+                    $.getJSON("http://localhost:60235/api/search/GetFilterForOffer?id=" + data[0].id, function (data2) {                      
+                         $("#tagDivResult").html("");
+
+                         $(data2).each(function (iterator, value) {
+                             if(iterator < 11)
+                                 {
+                                    $("#tagDivResult").append('<div class="col-lg-3"> <input type="checkbox" checked>' + value.name + '</input> </div>'  );
+                                 }
+
+               
+                                });
+                });
                         });
 
-                        function searchOffers(title) {
-                            var url = "http://localhost:60235/api/search?";
-                            url = url + "title=null";
-                            url = url + "&phrase=" + title;
-                           // url = url + "&parameters;
-                            $.getJSON(url, function (data) {
-                                console.log(data);
-                                //render results from data
-                                $.getJSON("http://localhost:60235/api/search/GetFilterForOffer?id=" + data[0].id, function (data2) {
-                                    console.log(data2);
-                                });
-                            });
-                        }
-                    </script>
+                                    $("#tagDiv").fadeIn();
                 }
+                    
+                    
+
+        </script>
+    }
 
 
 
