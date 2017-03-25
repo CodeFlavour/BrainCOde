@@ -156,10 +156,10 @@
                     $(".akucjaAleCoZnalazloDescription").fadeOut();
                     $(".akucjaAleCoZnalazloName").fadeOut();
 
-                    $("#imageAllternatywa").attr("src", "../images/allternatywa/alejaknazwacCollapsed.png");
+                    $("#imageAllternatywa").attr("src", "../images/allternatywa/aleternatywaExpanded.png");
                     $(".alleCoZnalazloDIV").animate({ width: '380px' }, 500);
                     $(".allternatywaDIV").animate({ width: '760px' }, 500);
-                    $("#imageAleCoZnalazlo").attr("src", "../images/allternatywa/alecoznalazloExpanded.png");
+                    $("#imageAleCoZnalazlo").attr("src", "../images/allternatywa/alecoznalazloCollapsed.png");
 
                     $(".akucjaAllternatywaDescription").fadeIn();
                     $(".akucjaAllternatywaName").fadeIn();
@@ -197,11 +197,6 @@
                 $("#allternatywaTopicDIV").fadeIn();
             }
 
-            //$(function () {
-            //    $("#searchButton").click(function () {
-                   
-            //    });
-            //});
 
             function searchOffers(title) {
                 var url = "http://localhost:60235/api/search?";
@@ -209,7 +204,7 @@
                 url = url + "&phrase=" + title;
                 // url = url + "&parameters;
                 $.getJSON(url, function (data) {
-                   
+                    console.log(data);
                     $("#alleCoZnalazoloResultDIV").html("");
 
                     $(data).each(function (iterator, value) {
@@ -262,7 +257,6 @@
                         $("#allternatywaResultDIV").append('<div class="container"> <div class="row" style= "padding-top:5px;" > <div class="col-lg-7"> <div class="media"> <div class="media-left">  <a href="#"> <img class="media-object akucjaAleCoZnalazloImages" src=" ' + value.photoUrl + '" alt="...">  </a> </div> <div class="media-body"> <h4 class="media-heading akucjaAllternatywaName">' + value.name + '</h4> <p class="akucjaAllternatywaDescription"> Kup teraz ' + value.buyNowPrice + '</p>  </div>  </div>  </div>  </div> </div>')
                     });
                                     });
-                alert($(".allternatywaDIV").css("width"))
                  if($(".allternatywaDIV").css("width") < '650')
                      {
                        $(".akucjaAllternatywaDescription").fadeOut();
