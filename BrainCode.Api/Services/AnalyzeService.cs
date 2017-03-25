@@ -36,29 +36,31 @@ namespace BrainCode.Api.Services
                 {
                     ResultToken resultToken = result.FirstOrDefault(x => IsEqual(x.Text, token.Text));
 
-                    if (result != null)
+                    if (resultToken != null)
                     {
                         resultToken.Views += statistic.Offer.Views;
+                        resultToken.Occurences++;
                     }
                     else
                     {
                         result.Add(new ResultToken()
                         {
                             Text = token.Text,
-                            Views = statistic.Offer.Views
+                            Views = statistic.Offer.Views,
+                            Occurences = 1
                         });
                     }
                 }
             }
 
-            result.OrderBy(x => x.Views);
+            result = result.OrderByDescending(x => x.Stat).ToList();
 
             return result;
         }
 
         public async Task<List<Statistic>> GetStatistics(string searchPhrase, decimal priceFrom, decimal priceTo)
         {
-            List<Offer> offers = await _searchService.SearchOffers(null, searchPhrase, new List<Parameter>() { new Parameter() { ParameterName = "price_from", ParameterValue = priceFrom.ToString() }, new Parameter() { ParameterName = "price_to", ParameterValue = priceTo.ToString() } });
+            List<Offer> offers = await _searchService.SearchOffers(null, searchPhrase, new List<Parameter>() { new Parameter() { ParameterName = "price_from", ParameterValue = priceFrom.ToString() }, new Parameter() { ParameterName = "price_to", ParameterValue = priceTo.ToString() } }, Enums.SortTypeEnum.Popularity, Enums.SortDirectionEnum.Descending, 100);
 
             List<Statistic> statistics = new List<Statistic>();
 
@@ -96,7 +98,14 @@ namespace BrainCode.Api.Services
                 .Replace("/", " ")
                 .Replace(",", " ")
                 .Replace(".", " ")
+                .Replace("|", " ")
+                .Replace("@", " ")
+                .Replace("!", " ")
+                .Replace("#", " ")
+                .Replace("*", " ")
+                .Replace("+", " ")
                 .Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                .Where(x => x.Length > 1)
                 .ToList();
 
             List<string> removeList = new List<string>();

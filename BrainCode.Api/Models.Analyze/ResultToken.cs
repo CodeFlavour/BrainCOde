@@ -9,5 +9,13 @@ namespace BrainCode.Api.Models.Analyze
     {
         public string Text { get; set; }
         public int Views { get; set; }
+        public int Occurences { get; set; }
+        public int Stat
+        {
+            get
+            {
+                return (int) Views;
+            }
+        }
     }
 }
