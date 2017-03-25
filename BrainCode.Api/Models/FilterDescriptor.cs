@@ -7,6 +7,10 @@ namespace BrainCode.Api.Models
 {
     public class FilterDescriptor
     {
+        public FilterDescriptor()
+        {
+            Values = new List<FilterDescriptorValues>();
+        }
         public string ID { get; set; }
         public string Name { get; set; }
         public List<FilterDescriptorValues> Values { get; set; }
