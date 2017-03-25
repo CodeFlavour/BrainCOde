@@ -33,5 +33,12 @@ namespace BrainCode.Api.Controllers
             //var response = 
             return foundOffers;
         }
+
+
+        [HttpGet("{GetFilterForCategory}")]
+        public async Task<List<FilterDescriptor>> GetFilterDescriptorsForOffer(string id)
+        {
+            return (await searchService.GetFiltersDataForCategory(id));
+        }
     }
 }
