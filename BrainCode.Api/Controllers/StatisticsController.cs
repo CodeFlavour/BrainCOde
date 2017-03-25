@@ -23,7 +23,6 @@ namespace BrainCode.Api.Controllers
         [HttpGet()]
         public async Task<List<ResultToken>> Get(string phrase, decimal priceFrom, decimal priceTo)
         {
-
             return await _analyzeService.Analyze(phrase, priceFrom, priceTo);
         }
     }
