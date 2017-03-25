@@ -1,0 +1,75 @@
+﻿<style>
+    #mainAlleCoImage {
+        width: 300px;
+        height: 100px;
+    }
+
+    #searchInputMy {
+        border: 3px solid green;
+        margin: auto;
+        width: 95% !important;
+        height: 40px;
+    }
+
+    #searchButton {
+        border: 3px solid #2b2f49;
+        margin: auto;
+        width: 90% !important;
+        height: 40px;
+    }
+
+    .nopadding {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .alleCenterImageDiv {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+    }
+
+    .alleImage {
+        height: 30px;
+        width: 170px;
+    }
+
+    .hrBreakLine {
+        border: 2px solid #f38148;
+    }
+
+</style>
+
+@{ 
+    ViewBag.Title = "Alle Jak Nazwać?"
+}
+
+<!-- Wyszukiwanie-->
+<div class="row">
+    <div class="col-lg-4" id="mainAlleCoImage">
+        <img src="~/images/vizualization/alejaknazwacCollapsed.png" id="mainAlleCoImage" />
+    </div>
+    <div class="col-lg-6 .nopadding">
+        <div style="padding-top:33px;">
+            <input type="text" id="searchInputMy" class="form-control" placeholder="Szukasz...?">
+        </div>
+    </div>
+    <div class="col-lg-2 .nopadding" style="padding-top:33px;">
+        <button type="button" class="btn btn-default" id="searchButton">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </button>
+    </div>
+</div>
+
+
+
+
+@section scripts
+{
+    <script>
+    </script>
+}
+
+
+
