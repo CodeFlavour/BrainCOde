@@ -220,9 +220,9 @@
                         $(data2).each(function (iterator, value) {
                             if (value.values.length != 0) {
                                 $("#tagDivResult").append('<div class="col-lg-3"> <input class="tagAtrribute" name=' + value.values[0].value + ' onchange="changeTagValues();" type="checkbox" id="' + value.values[0].key + '" checked>' + value.name + '</input> </div>');
-                            }
-                            changeTagValues();
+                            }                            
 
+                            changeTagValues();
                         });
                     });
                    

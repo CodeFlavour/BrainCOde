@@ -50,7 +50,10 @@ namespace BrainCode.Api.Services
                 }
                 urlParameters.Add("sort=" + sort);
             }
-            urlParameters.Add("limit=" + limit.ToString());
+
+            var limitParam = parameters.FirstOrDefault(x => x.ParameterName == "limit");
+            urlParameters.Add("limit=" + (limitParam == null ? limit.ToString() : limitParam.ParameterValue));
+            
 
             if (!string.IsNullOrEmpty(searchPhrase))
             {
